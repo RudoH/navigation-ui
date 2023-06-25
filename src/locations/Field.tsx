@@ -52,7 +52,7 @@ import {
 const indentationWidth = 50;
 const indicator = false;
 const collapsible = false;
-const DEBUG = true;
+const DEBUG = false;
 
 const dropAnimationConfig: DropAnimation = {
   keyframes({ transform }) {
