@@ -1,11 +1,6 @@
 import { ChangeEvent, useState, useEffect, useMemo, useRef } from "react";
-import {
-  Switch,
-  TextInput,
-  Flex,
-  IconButton,
-} from "@contentful/f36-components";
-import { PlusCircleIcon, PlusIcon, DeleteIcon } from "@contentful/f36-icons";
+import { IconButton } from "@contentful/f36-components";
+import { PlusCircleIcon } from "@contentful/f36-icons";
 import { FieldAppSDK } from "@contentful/app-sdk";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { v4 as uuid } from "uuid";
@@ -45,11 +40,7 @@ import {
   Modifier,
   defaultDropAnimation,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import {
   TreeItems,
   TreeItem,
@@ -61,7 +52,6 @@ import {
 const indentationWidth = 50;
 const indicator = false;
 const collapsible = false;
-const removable = false;
 const DEBUG = true;
 
 const dropAnimationConfig: DropAnimation = {
@@ -107,12 +97,11 @@ const Field = () => {
   useEffect(() => {
     sdk.window.startAutoResizer();
     setItems(sdk.field.getValue());
-  }, []);
+  }, [sdk.field, sdk.window]);
 
   useEffect(() => {
-    console.log(items);
     sdk.field.setValue(items);
-  }, [items]);
+  }, [items, sdk.field]);
 
   function handleRemove(id: string) {
     setItems((items) => removeItem(items, id));
