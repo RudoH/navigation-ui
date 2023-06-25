@@ -62,6 +62,7 @@ const indentationWidth = 50;
 const indicator = false;
 const collapsible = false;
 const removable = false;
+const DEBUG = true;
 
 const dropAnimationConfig: DropAnimation = {
   keyframes({ transform }) {
@@ -359,6 +360,7 @@ const Field = () => {
         icon={<PlusCircleIcon />}
         onClick={() => addItem()}
       />
+      {DEBUG && JSON.stringify(items)}
     </>
   );
 

@@ -80,38 +80,40 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
           {...props}
         >
           <div className={styles.row} ref={ref}>
-            <Handle {...handleProps} />
-            <TextInput
-              aria-label="label"
-              value={label}
-              id={props.id}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onValueChange(e, "label")
-              }
-            />
-            <TextInput
-              value={url}
-              aria-label="url"
-              id={props.id}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onValueChange(e, "url")
-              }
-            />
-            <Switch
-              isChecked={highlighted === "on"}
-              value={highlighted}
-              id={props.id}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onValueChange(e, "highlighted")
-              }
-            >
-              Highlight
-            </Switch>
-            <span className={styles.Actions}>
-              {onRemove ? (
-                <Remove className={styles.Remove} onClick={onRemove} />
-              ) : null}
-            </span>
+            <div>
+              <Handle {...handleProps} />
+              <TextInput
+                aria-label="label"
+                value={label}
+                id={props.id}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onValueChange(e, "label")
+                }
+              />
+              <TextInput
+                value={url}
+                aria-label="url"
+                id={props.id}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onValueChange(e, "url")
+                }
+              />
+            </div>
+            <div className={styles.right}>
+              <Switch
+                isChecked={highlighted === "on"}
+                value={highlighted}
+                id={props.id}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onValueChange(e, "highlighted")
+                }
+              />
+              <span className={styles.Actions}>
+                {onRemove ? (
+                  <Remove className={styles.Remove} onClick={onRemove} />
+                ) : null}
+              </span>
+            </div>
           </div>
         </li>
       </Flex>
