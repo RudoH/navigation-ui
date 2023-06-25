@@ -93,31 +93,9 @@ const measuring = {
   },
 };
 
-const initialItems: TreeItems = [
-  {
-    id: "something",
-    label: "link-1",
-    url: "url-1",
-    children: [
-      {
-        id: "child",
-        label: "child-label",
-        url: "child-url-1",
-        children: [],
-      },
-    ],
-  },
-  {
-    id: "somethingelse",
-    label: "link-2",
-    url: "url-2",
-    children: [],
-  },
-];
-
 const Field = () => {
   const sdk = useSDK<FieldAppSDK>();
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState<TreeItem[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
